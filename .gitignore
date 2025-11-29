@@ -41,6 +41,7 @@ env/
 data/
 *.json
 !example*.json
+!repositories.json
 
 # Docker
 .dockerignore

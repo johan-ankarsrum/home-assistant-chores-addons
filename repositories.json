@@ -1,0 +1,20 @@
+{
+  "name": "Home Assistant Chores Add-ons",
+  "url": "https://github.com/johan-ankarsrum/home-assistant-chores-addons",
+  "maintainer": "Johan Ankarsrum",
+  "addons": [
+    {
+      "name": "Household Chores Reminder",
+      "slug": "household-chores",
+      "description": "Reminder system for household chores with notifications to phones",
+      "url": "https://github.com/johan-ankarsrum/home-assistant-chores-addons/tree/main/addons/household-chores",
+      "version": "1.0.0",
+      "image": "ghcr.io/johan-ankarsrum/addon-household-chores:{arch}",
+      "arch": [
+        "amd64",
+        "armv7",
+        "arm64"
+      ]
+    }
+  ]
+}
