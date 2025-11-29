@@ -4,5 +4,9 @@
   "homeassistant": "2024.1.0",
   "render_readme": true,
   "zip_release": true,
-  "filename": "household-chores.zip"
+  "filename": "household-chores.zip",
+  "domain": "household_chores",
+  "version": "1.0.0",
+  "description": "Household Chores Reminder integration for Home Assistant (HACS)",
+  "issue_tracker": "https://github.com/johan-ankarsrum/home-assistant-chores-addons/issues"
 }
