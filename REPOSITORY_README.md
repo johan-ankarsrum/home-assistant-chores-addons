@@ -1,76 +1,93 @@
-# Home Assistant Chores Add-ons Repository
-
-Repository containing Home Assistant add-ons for household chore management and notifications.
-
-## Add-ons
-
-### Household Chores Reminder
+# Household Chores Reminder for Home Assistant
 
 A smart reminder system for household chores that sends notifications to your phones and integrates with Home Assistant.
 
-**Features:**
-- Define household tasks with flexible scheduling (daily, weekly, monthly, quarterly, yearly)
-- Automatic reminders at optimal times (16:00 on weekdays, 08:00 on weekends)
-- Send notifications to multiple family members' phones
-- Mark tasks as done or postpone directly from notifications
-- Persistent storage of tasks and device configurations
-- Full REST API for managing tasks and devices
-- Timezone support (Europe/Stockholm by default, customizable)
+## Features
 
-**Installation:**
+- ✅ Define household tasks with flexible scheduling (daily, weekly, monthly, quarterly, yearly)
+- ✅ Automatic reminders at optimal times (16:00 on weekdays, 08:00 on weekends)
+- ✅ Send notifications to multiple family members' phones
+- ✅ Mark tasks as done or postpone directly from notifications
+- ✅ Persistent storage of tasks and device configurations
+- ✅ Full REST API for managing tasks and devices
+- ✅ Timezone support (Europe/Stockholm by default, customizable)
+- ✅ Easy installation via HACS
 
-1. In Home Assistant, go to **Settings → Add-ons → Add-on Store**
-2. Click the **three-dot menu (⋮)** and select **"Repositories"**
-3. Add this repository: `https://github.com/johan-ankarsrum/home-assistant-chores-addons`
-4. The **"Household Chores Reminder"** add-on will appear in the store
-5. Click **"Install"** and follow the quick start guide
+## Installation
 
-**Quick Start:**
+### Via HACS (Recommended)
 
-Once installed, refer to the add-on documentation:
+1. Have [HACS](https://hacs.xyz/) installed in Home Assistant
+2. Go to **HACS → Integrations**
+3. Click **"Explore & Download Repositories"**
+4. Search for **"Household Chores Reminder"**
+5. Click **"Download"** and restart Home Assistant
+6. Go to **Settings → Devices & Services → Create Automation**
+7. Add the integration and configure with your preferences
+
+### Manual Installation
+
+1. Download this repository as a ZIP file
+2. Extract to `custom_components/household_chores` in your Home Assistant config directory
+3. Restart Home Assistant
+4. Go to **Settings → Devices & Services** and add the integration
+
+## Quick Start
+
+After installation, refer to the documentation:
 - [Quick Start Guide](addons/household-chores/QUICKSTART.md) - 5-minute setup
 - [Full README](addons/household-chores/README.md) - Complete documentation
 - [Deployment Guide](addons/household-chores/DEPLOYMENT.md) - Detailed setup instructions
+- [API Examples](addons/household-chores/API_EXAMPLES.md) - Using the REST API
 
 ## Repository Structure
 
 ```
-home-assistant-chores-addons/
-└── addons/
-    └── household-chores/          # Household Chores Reminder add-on
-        ├── Dockerfile             # Docker container definition
-        ├── config.yaml            # Add-on configuration
-        ├── requirements.txt       # Python dependencies
-        ├── app/                   # Application code
-        │   ├── main.py           # FastAPI application
-        │   ├── models.py         # Data models
-        │   ├── storage.py        # Persistence layer
-        │   ├── scheduler.py      # Scheduling logic
-        │   └── ha_client.py      # HA integration
-        ├── README.md             # Add-on documentation
-        ├── QUICKSTART.md         # Quick start guide
-        ├── DEPLOYMENT.md         # Deployment instructions
-        ├── ARCHITECTURE.md       # Technical architecture
-        ├── API_EXAMPLES.md       # API examples
-        └── [other docs...]
-```
+household-chores-addons/
+├── custom_components/
+│   └── household_chores/          # HACS-compatible integration
+│       ├── manifest.json          # Integration metadata
+│       ├── config_flow.py         # Configuration UI
+│       ├── __init__.py            # Integration setup
+│       ├── sensor.py              # Status sensor
+│       ├── button.py              # Control buttons
+│       └── strings.json           # Localization strings
+├── addons/
+│   └── household-chores/          # Original Docker add-on (for reference)
+│       ├── Dockerfile
+│       ├── config.yaml
+│       ├── app/                   # FastAPI application
+│       └── [documentation]
+├── hacs.json                      # HACS configuration
+└── README.md                      # This file
 
 ## Requirements
 
 - Home Assistant 2024.1.0 or later
-- Docker (if deploying manually)
-- Mobile app integration enabled in Home Assistant
+- HACS installed and configured
+- Mobile app integration enabled in Home Assistant (for notifications)
+
+## Configuration
+
+The integration provides a configuration UI:
+
+1. After installation, go to **Settings → Devices & Services**
+2. Look for **"Household Chores Reminder"** and click **"Configure"**
+3. Enter:
+   - **Home Assistant URL**: Your HA instance URL (e.g., `http://homeassistant.local:8123`)
+   - **Access Token**: Create a long-lived token in **Settings → Developer Tools → Long-Lived Access Tokens**
+   - **Timezone**: Your timezone (default: Europe/Stockholm)
+   - **Port**: Port for the service (default: 8000)
+   - **Log Level**: Logging verbosity (default: info)
 
 ## Documentation
 
-Complete documentation for the Household Chores Reminder add-on is located in `addons/household-chores/`:
+Complete documentation is located in `addons/household-chores/`:
 
-- **[README.md](addons/household-chores/README.md)** - Full feature overview and setup
+- **[README.md](addons/household-chores/README.md)** - Full feature overview
 - **[QUICKSTART.md](addons/household-chores/QUICKSTART.md)** - 5-minute setup guide
-- **[DEPLOYMENT.md](addons/household-chores/DEPLOYMENT.md)** - Deployment options and troubleshooting
-- **[ARCHITECTURE.md](addons/household-chores/ARCHITECTURE.md)** - Technical architecture
-- **[API_EXAMPLES.md](addons/household-chores/API_EXAMPLES.md)** - API testing examples
-- **[CHECKLIST.md](addons/household-chores/CHECKLIST.md)** - Setup verification checklist
+- **[ARCHITECTURE.md](addons/household-chores/ARCHITECTURE.md)** - Technical details
+- **[API_EXAMPLES.md](addons/household-chores/API_EXAMPLES.md)** - API examples
 
 ## Support
 

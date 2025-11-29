@@ -42,6 +42,9 @@ data/
 *.json
 !example*.json
 !repositories.json
+!manifest.json
+!hacs.json
+!strings.json
 
 # Docker
 .dockerignore

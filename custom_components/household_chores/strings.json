@@ -1,0 +1,31 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Household Chores Reminder Setup",
+        "description": "Configure your Household Chores Reminder integration.\n\nYou need a Home Assistant long-lived access token. Create one in Settings → Developer Tools → Long-Lived Access Tokens.",
+        "data": {
+          "ha_url": "Home Assistant URL",
+          "ha_token": "Access Token",
+          "timezone": "Timezone",
+          "port": "Port",
+          "log_level": "Log Level"
+        },
+        "data_description": {
+          "ha_url": "The base URL of your Home Assistant instance",
+          "ha_token": "A long-lived access token from Home Assistant",
+          "timezone": "Your timezone (e.g., Europe/Stockholm)",
+          "port": "Port for the reminder service",
+          "log_level": "Logging level for debugging"
+        }
+      }
+    },
+    "error": {
+      "invalid_token": "Invalid token provided",
+      "unknown": "An unexpected error occurred"
+    },
+    "abort": {
+      "already_configured": "Integration is already configured"
+    }
+  }
+}

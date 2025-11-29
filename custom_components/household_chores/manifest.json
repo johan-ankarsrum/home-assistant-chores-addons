@@ -1,0 +1,19 @@
+{
+  "codeowners": ["@johan-ankarsrum"],
+  "config_flow": true,
+  "documentation": "https://github.com/johan-ankarsrum/home-assistant-chores-addons",
+  "domain": "household_chores",
+  "homeassistant": "2024.1.0",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/johan-ankarsrum/home-assistant-chores-addons/issues",
+  "name": "Household Chores Reminder",
+  "requirements": [
+    "fastapi==0.104.1",
+    "uvicorn==0.24.0",
+    "httpx==0.25.1",
+    "pydantic==2.5.0",
+    "python-dateutil==2.8.2",
+    "aiofiles==23.2.1"
+  ],
+  "version": "1.0.0"
+}

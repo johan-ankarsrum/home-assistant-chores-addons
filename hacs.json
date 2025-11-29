@@ -1,0 +1,8 @@
+{
+  "name": "Household Chores Reminder",
+  "hacs": "integration",
+  "homeassistant": "2024.1.0",
+  "render_readme": true,
+  "zip_release": true,
+  "filename": "household-chores.zip"
+}
