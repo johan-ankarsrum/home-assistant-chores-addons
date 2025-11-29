@@ -19,11 +19,11 @@ A smart reminder system for household chores that sends notifications to your ph
 
 **Installation:**
 
-1. In Home Assistant, go to Settings → Add-ons → Add-on Store
-2. Click the three-dot menu (⋮) and select "Repositories"
+1. In Home Assistant, go to **Settings → Add-ons → Add-on Store**
+2. Click the **three-dot menu (⋮)** and select **"Repositories"**
 3. Add this repository: `https://github.com/johan-ankarsrum/home-assistant-chores-addons`
-4. The "Household Chores Reminder" add-on will appear in the store
-5. Click Install and follow the QUICKSTART guide below
+4. The **"Household Chores Reminder"** add-on will appear in the store
+5. Click **"Install"** and follow the quick start guide
 
 **Quick Start:**
 
