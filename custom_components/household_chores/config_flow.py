@@ -12,10 +12,11 @@ _LOGGER = logging.getLogger(__name__)
 DOMAIN = "household_chores"
 
 
-class HouseholdChoresConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class HouseholdChoresConfigFlow(config_entries.ConfigFlow):
     """Handle a config flow for Household Chores Reminder."""
 
     VERSION = 1
+    DOMAIN = DOMAIN
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
@@ -24,18 +25,15 @@ class HouseholdChoresConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            try:
-                # Validate token is not empty
-                if not user_input.get("ha_token"):
-                    errors["ha_token"] = "invalid_token"
-                else:
-                    return self.async_create_entry(
-                        title="Household Chores Reminder",
-                        data=user_input,
-                    )
-            except Exception as err:
-                _LOGGER.exception("Unexpected error: %s", err)
-                errors["base"] = "unknown"
+            # Validate token is not empty
+            if not user_input.get("ha_token"):
+                errors["ha_token"] = "invalid_token"
+            
+            if not errors:
+                return self.async_create_entry(
+                    title="Household Chores Reminder",
+                    data=user_input,
+                )
 
         data_schema = vol.Schema(
             {
@@ -53,7 +51,4 @@ class HouseholdChoresConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=data_schema,
             errors=errors,
-            description_placeholders={
-                "setup_link": "https://github.com/johan-ankarsrum/home-assistant-chores-addons/blob/main/addons/household-chores/QUICKSTART.md"
-            },
         )
