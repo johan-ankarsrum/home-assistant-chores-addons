@@ -1,6 +1,8 @@
-# Household Chores Reminder - Home Assistant Add-on
+# Household Chores Reminder Add-on
 
 A smart reminder system for household chores that sends notifications to your phones and integrates with Home Assistant.
+
+This add-on is part of the [home-assistant-chores-addons](https://github.com/johan-ankarsrum/home-assistant-chores-addons) repository.
 
 ## Features
 
