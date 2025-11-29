@@ -1,0 +1,71 @@
+---
+# Home Assistant Add-on configuration for Household Chores Reminder
+
+name: Household Chores Reminder
+description: Reminder system for household chores with notifications to phones
+version: 1.0.0
+slug: household-chores
+
+# Maintainer information
+maintainers:
+  - Your Name <your.email@example.com>
+
+# Add-on category
+category: automation
+
+# Architecture support
+arch:
+  - amd64
+  - armv7
+  - arm64
+
+# Image configuration (for the Docker image)
+image: homeassistant/{arch}-addon-household-chores
+
+# Ports exposed
+ports:
+  8000/tcp: 8000
+
+# Volume mounts for persistent data
+volumes:
+  data: {}
+
+# Environment variables and schema for configuration
+schema:
+  ha_url: str
+  ha_token: str
+  timezone: str?
+  port: int?
+  log_level: str?
+
+# Default configuration
+options:
+  ha_url: http://homeassistant.local:8123
+  ha_token: ""
+  timezone: Europe/Stockholm
+  port: 8000
+  log_level: info
+
+# Requirement for protected configuration (token)
+protected_config_entries:
+  - ha_token
+
+# Start behavior
+start: auto
+
+# Docker run parameters
+docker_mounts:
+  - /data
+
+# Requirements
+requirements:
+  - home_assistant: "2024.1.0"
+
+# Advanced settings
+boot: auto
+
+# Allow incoming requests
+services:
+  http:
+    main: true
+    port: 8000

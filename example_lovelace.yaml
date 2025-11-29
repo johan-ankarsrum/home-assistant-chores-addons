@@ -1,0 +1,40 @@
+# Example Lovelace Dashboard Card for Household Chores
+#
+# Add this to your Home Assistant Lovelace dashboard to show chore tasks.
+# You can customize the styling and layout as needed.
+
+type: vertical-stack
+cards:
+  - type: heading
+    heading: Household Chores
+
+  - type: custom:card-templater
+    card:
+      type: entities
+      title: Upcoming Tasks
+      entities: []
+    filters:
+      template: |
+        {% set api_url = 'http://homeassistant.local:8000' %}
+        Let users navigate to the full chores UI instead
+
+  - type: iframe
+    url: "http://homeassistant.local:8000/docs"
+    title: "Chores Management"
+    aspect_ratio: 16:9
+
+# Alternative approach using a REST sensor to pull tasks
+# Add this to your Home Assistant configuration.yaml:
+
+rest_sensor:
+  - name: Household Chores Tasks
+    resource: "http://homeassistant.local:8000/tasks"
+    method: GET
+    scan_interval: 300
+    json_attributes:
+      - id
+      - name
+      - frequency
+      - next_due
+      - assigned_to
+    value_template: "{{ value_json | length }}"

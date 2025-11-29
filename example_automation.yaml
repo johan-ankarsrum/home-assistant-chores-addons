@@ -1,0 +1,32 @@
+---
+# Example Home Assistant Automation for Chores Add-on Integration
+#
+# This automation listens for notification action events from mobile apps
+# and forwards the action to the add-on's /ha/action endpoint.
+#
+# To use this:
+# 1. Add this automation to your Home Assistant configuration
+# 2. Replace the IP address and add-on port with your actual values
+# 3. The add-on will be available at: http://<your-ha-host>:8000 (or your configured port)
+
+automation:
+  - id: household_chores_notification_actions
+    alias: Household Chores - Notification Actions
+    description: Forward notification actions to the chores add-on
+    trigger:
+      - platform: event
+        event_type: mobile_app_notification_action
+    condition:
+      - condition: template
+        value_template: >
+          {{ trigger.event.data.action | default('') | regex_search('^TASK_(DONE|POSTPONE)_') }}
+    action:
+      - service: rest_command.chores_notification_action
+        data:
+          action: "{{ trigger.event.data.action }}"
+    mode: queued
+    max_exceeded: silent
+
+# REST Command configuration - add this to your configuration.yaml or a separate include
+rest_command:
+  chores_notification_action: !secret chores_action_endpoint
